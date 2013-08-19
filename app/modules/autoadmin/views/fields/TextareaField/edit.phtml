@@ -1,0 +1,19 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var \AutoAdmin\Fields\Field $field */
+/** @var \Phalcon\Mvc\ModelInterface $model */
+/** @var \AutoAdmin\Helpers\FieldParams $params */
+/** @var array $tag */
+
+
+if ($params->getParam('editor')) {
+
+    $this->assets
+        ->addJs('admin_assets/js/plugins/ckeditor/ckeditor.js')
+        ->addJs('admin_assets/js/fields/editor/editor.js');
+
+    $tag['class'] = 'editor';
+}
+
+echo $this->tag->textArea($tag);

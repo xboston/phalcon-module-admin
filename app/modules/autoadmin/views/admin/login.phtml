@@ -1,0 +1,32 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var \Phalcon\Tag $this->tag */
+
+?>
+<div class="row well login-wrap">
+    <h1 class="login-title">Авторизация</h1>
+    <?php echo $this->flashSession->output(); ?>
+    <form action="<?php echo $this->url->get(array('for' => 'admin-login')) ?>" method="post" class="form-horizontal">
+
+        <div class="control-group">
+            <label class="control-label" for="username">Логин</label>
+            <div class="controls">
+                <?php echo $this->tag->textField(['username', 'size' => '30', 'class' => 'inputbox']); ?>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="password">Пароль</label>
+            <div class="controls">
+                <?php echo $this->tag->passwordField(['password', 'size' => '30', 'class' => 'inputbox']); ?>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <?php echo $this->tag->submitButton(['Войти', 'class' => 'btn']) ?>
+            </div>
+        </div>
+        <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>" value="<?php echo $this->security->getToken() ?>"/>
+    </form>
+</div>

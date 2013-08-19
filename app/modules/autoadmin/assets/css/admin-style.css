@@ -1,0 +1,47 @@
+@charset 'UTF-8';
+
+@media (min-width: 1200px){
+    body {
+        position: relative;
+        padding-top: 50px;
+    }
+}
+
+
+.brand-logo
+{
+    background: url('/assets/img/logo.png') no-repeat left center;
+    height: 40px;
+    width: 90px;
+    display: block;
+    float: left;
+    filter: gray;
+    -webkit-filter: grayscale(70%);
+}
+
+
+/* login screen */
+.login-wrap {width: 400px; position: relative; top:50%; left:50%; margin: 50px 0 50px -200px; }
+.login-wrap-inner {padding: 10px; background: #ccc; border-radius: 5px; }
+.login-title {margin: 0 0 10px; text-align: center;}
+
+.login-wrap .control-label {width: 90px;}
+.login-wrap .controls {margin-left: 110px;}
+
+.login-wrap form { margin-bottom: 0; }
+.login-wrap .control-group:last-of-type { margin-bottom: 0; }
+
+
+.form-search.pull-right {margin-right: 10px; }
+
+.id-cell, .created_at-cell,
+.items-list-buttons-cell {width: 1px; white-space: nowrap;}
+
+ul.columns li {float: left; width: 200px; margin: 0 5px 1px 0; }
+
+.form-row {margin-bottom: 10px;}
+
+
+.map-editor {width: 600px; height: 500px; }
+
+.row-fluid .table td, .row-fluid .table th { display: table-cell; margin: 0; float: none; }

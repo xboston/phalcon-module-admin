@@ -1,0 +1,22 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var \AutoAdmin\Fields\Field $field */
+/** @var \Phalcon\Mvc\ModelInterface $model */
+/** @var \AutoAdmin\Helpers\FieldParams $params */
+/** @var array $tag */
+
+if ($params->getParam('type') !== 'hidden') :
+?>
+<div class="control-group">
+    <label class="control-label" for="<?php echo $params->getParam('id') ?>">
+        <?php echo $field->getLabel() ?>
+    </label>
+    <div class="controls">
+        <?php echo $this->getContent() ?>
+    </div>
+</div>
+<?php
+else :
+    echo $this->getContent();
+endif;

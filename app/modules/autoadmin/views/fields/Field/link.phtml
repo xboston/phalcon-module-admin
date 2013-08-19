@@ -1,0 +1,16 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var \AutoAdmin\Fields\Field $field */
+/** @var \Phalcon\Mvc\ModelInterface $model */
+/** @var \AutoAdmin\Helpers\FieldParams $params */
+/** @var array $tag */
+
+$href = $this->url->get([
+    'for'    => 'admin-action',
+    'entity' => get_class($model),
+    'action' => 'edit',
+    'params' => $model->id
+]);
+
+echo '<a href="'.$href.'">'.$field->getValue().'</a>';

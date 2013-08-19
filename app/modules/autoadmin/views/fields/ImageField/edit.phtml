@@ -1,0 +1,15 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var \AutoAdmin\Fields\Field $field */
+/** @var \Phalcon\Mvc\ModelInterface $model */
+/** @var \AutoAdmin\Helpers\FieldParams $params */
+/** @var array $tag */
+
+$config = \Phalcon\DI::getDefault()->get('config')->application;
+
+if ($value = $field->getValue()){
+    echo '<img src="'.$config->imagesUri.str_replace('%s', $params->getParam('options.thumb'), $value).'" alt="" /><br />';
+}
+
+echo $this->tag->fileField($params->getParam('name'));

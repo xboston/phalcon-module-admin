@@ -1,0 +1,79 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var \Phalcon\Mvc\ModelInterface $items */
+/** @var \AutoAdmin\Helpers\FieldsCollection $fields */
+/** @var stdClass $paginator */
+
+$entityName = $this->dispatcher->getParam('entity');
+$createHref = $this->url->get(
+    [
+    'for'    => 'admin-action' ,
+    'entity' => $entityName ,
+    'action' => 'edit'
+    ]
+);
+
+?>
+
+<div class="page-header">
+
+    <div class="pull-right">
+        <a href="<?php echo $createHref ?>" class="btn"><i class="icon-plus"></i> Создать</a>
+    </div>
+
+    <form class="form-search pull-right">
+        <div class="input-append">
+            <input type="text" class="span2 search-query">
+            <button type="submit" class="btn">Найти</button>
+        </div>
+    </form>
+
+    <h1><?php echo $this->entityManager->getProperty($entityName , 'title') ?></h1>
+</div>
+
+<table class="table table-bordered table-striped table-<?php echo $entityName; ?>-list">
+    <thead>
+    <tr>
+        <?php foreach ( $fields->toArray() as $field ) : ?>
+            <th><?php echo $field->getLabel() ?></th>
+        <?php endforeach ?>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    foreach ( $items as $item ) :
+        $editHref   = $this->url->get(
+            [
+            'for'    => 'admin-action' ,
+            'entity' => $entityName ,
+            'action' => 'edit' ,
+            'params' => $item->id
+            ]
+        );
+        $deleteHref = $this->url->get(
+            [
+            'for'    => 'admin-action' ,
+            'entity' => $entityName ,
+            'action' => 'delete' ,
+            'params' => $item->id
+            ]
+        );
+        ?>
+        <tr>
+            <?php
+            foreach ( $fields->toArray() as $field ) {
+                $field->setModel($item);
+
+                echo $field->render('table_item');
+            }
+            ?>
+            <td class="items-list-buttons-cell">
+                <a class="btn btn-mini" title="Изменить" href="<?php echo $editHref ?>"><i class="icon-edit"></i></a>
+                <a class="btn btn-mini" title="Удалить" href="<?php echo $deleteHref ?>"><i class="icon-remove"></i></a>
+            </td>
+        </tr>
+    <?php endforeach ?>
+    </tbody>
+</table>

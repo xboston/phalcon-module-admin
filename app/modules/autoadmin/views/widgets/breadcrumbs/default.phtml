@@ -1,0 +1,29 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ * @var array                        $path
+ *
+ */
+
+?>
+<ul class="breadcrumb visible-desktop">
+    <?php
+
+    for ( $i = 0 , $n = count($path); $i < $n; $i++ ) {
+        $active = $i == $n - 1;
+        echo '<li' . ($active ? ' class="active"' : '') . '>';
+
+        if ( !$active ) {
+            echo '<a href="' . $path[$i]['href'] . '">';
+        }
+
+        echo $path[$i]['label'];
+
+        if ( !$active ) {
+            echo '</a> <span class="divider">/</span>';
+        }
+
+        echo '</li>';
+    }
+    ?>
+</ul>

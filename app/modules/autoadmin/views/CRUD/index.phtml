@@ -1,0 +1,62 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var array $entities */
+/** @var \AutoAdmin\Models\AdminUsers[] $users */
+
+?>
+<div class="row-fluid">
+    <div class="span6">
+        <div class="page-header" style="margin-top: 0;">
+            <h2>Сущности</h2>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Сущность</th>
+                <th class="span1">Записей</th>
+                <th class="span1"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ( $entities as $entity => $params ) :
+                $list_href = $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entity ]);
+                $new_href  = $this->url->get([ 'for' => 'admin-action' , 'entity' => $entity , 'action' => 'edit' ]);
+                $items     = $entity::count();
+                ?>
+                <tr>
+                    <td><a href="<?php echo $list_href ?>"><?php echo $params['title'] ?></a></td>
+                    <td class="span1"><?php echo number_format($items , 0 , '.' , ' ') ?></td>
+                    <td class="span1">
+                        <a href="<?php echo $new_href ?>" class="btn btn-mini" title="Добавить запись">
+                            <i class="icon-plus"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="span6">
+        <div class="page-header" style="margin-top: 0;">
+            <h2>Пользователи</h2>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Пользователь</th>
+                <th class="span2">Последний визит</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ( $users as $user ) : ?>
+                <tr>
+                    <td><?php echo $user->username ?></td>
+                    <td><?php echo date('Y-m-d H:i:s' , strtotime($user->last_login)) ?></td>
+                </tr>
+            <?php endforeach ?>
+        </table>
+        </tbody>
+    </div>
+</div>

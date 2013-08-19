@@ -1,0 +1,11 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var \AutoAdmin\Fields\Field $field */
+/** @var \Phalcon\Mvc\ModelInterface $parent */
+/** @var \AutoAdmin\Helpers\FieldParams $params */
+/** @var array $tag */
+
+if ($value = $field->getValue()) {
+    echo date($params->getParam('tag.format', 'd.m.Y H:i:s'), strtotime($value));
+}

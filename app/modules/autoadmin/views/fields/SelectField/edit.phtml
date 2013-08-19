@@ -1,0 +1,20 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+/** @var \AutoAdmin\Fields\Field $field */
+/** @var \Phalcon\Mvc\ModelInterface $model */
+/** @var \AutoAdmin\Helpers\FieldParams $params */
+/** @var array $tag */
+
+switch ($params->getParam('tag.source')) {
+    default:
+    case 'array':
+        echo $this->tag->selectStatic($tag, $params->getParam('tag.options'));
+        break;
+    case 'model':
+        $conditions = $params->getParam('tag.conditions');
+        $options    = $tag['model']::find($conditions);
+
+        echo $this->tag->select(array_merge([$tag['id'], $options], $tag));
+        break;
+}

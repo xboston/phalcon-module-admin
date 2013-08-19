@@ -1,0 +1,76 @@
+<?php
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+
+use AutoAdmin\Widgets\Widget;
+use AutoAdmin\Helpers\Auth;
+
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $this->config->site->name ?></title>
+
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /> -->
+    <?php $this->assets->outputCss('autoadmin_css') ?>
+
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="brand-logo"></span>
+            <a class="brand" href="/admin">
+                <?php echo $this->config->site->name ?>
+            </a>
+
+            <?php if ( Auth::instance()->loggedIn() ): ?>
+                <div class="nav-collapse collapse">
+                    <?php echo Widget::factory('Navbar')->render(); ?>
+                    <ul class="nav pull-right">
+                        <li><a href="/admin/logout"><?php echo Auth::instance()->getUser()->username ?>, выйти</a></li>
+                    </ul>
+                </div>
+            <?php endif ?>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid content">
+
+    <?php if ( Auth::instance()->loggedIn() ): ?>
+        <?php echo Widget::factory('Breadcrumbs' , true)->render(); ?>
+    <?php endif ?>
+
+    <?php $this->flashSession->output() ?>
+
+    <div class="content">
+        <?php echo $this->getContent() ?>
+    </div>
+
+</div>
+
+<div class="navbar navbar-fixed-bottom row-fluid visible-desktop phadmin-footer">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <ul class="nav pull-right">
+                <li>
+                    <a href="#">&#169; 2013 - <?php echo sprintf('%s - %s. phalcon: %s' , date('Y') , $this->config->site->name, \Phalcon\Version::get()); ?></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<?php $this->assets->outputJs('autoadmin_js') ?>
+
+</body>
+</html>
