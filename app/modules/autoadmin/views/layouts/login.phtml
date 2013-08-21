@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Шаблон страница авторизации в панели управления
+ */
+
+/** @var \Phalcon\Mvc\View\Engine\Php $this */
+
+use AutoAdmin\Widgets\Widget;
+use AutoAdmin\Helpers\AdminAuthHelper;
+
+?>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <span class="brand-logo"></span>
+            <a class="brand" href="/admin">
+                <?php echo $this->config->site->name ?>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid content">
+
+    <div class="content">
+        <?php echo $this->getContent() ?>
+    </div>
+
+</div>
+
+<div class="navbar navbar-fixed-bottom row-fluid visible-desktop phadmin-footer">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <ul class="nav pull-right">
+                <li>
+                    <a href="#">&#169; 2013 - <?php echo sprintf('%s - %s' , date('Y') , $this->config->site->name); ?></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
