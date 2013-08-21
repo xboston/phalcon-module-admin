@@ -6,8 +6,12 @@ define('ADMINROOT' , __DIR__);
 
 use Phalcon\DI;
 use Phalcon\Loader;
+use Phalcon\Mvc\ModuleDefinitionInterface;
+use Phalcon\Mvc\Dispatcher;
+use AutoAdmin\Plugins\AdminSecurity;
+use Phalcon\Session\Adapter\Files as Session;
 
-class Module
+class Module implements ModuleDefinitionInterface
 {
 
     public function registerAutoloaders()
@@ -17,14 +21,17 @@ class Module
             [
             'Admin\Controllers' => ADMINROOT . '/controllers/' ,
             'Admin\Fields'      => ADMINROOT . '/fields/'
-            ]
+            ] ,
+            true
         );
 
         $loader->registerClasses(
             [
             'AutoAdmin\Module' => ADMINROOT . '/../autoadmin/module.php'
-            ]
+            ] ,
+            true
         );
+
 
         $loader->register();
     }
@@ -34,10 +41,29 @@ class Module
      */
     public function registerServices($di)
     {
+
+        //Registering a dispatcher
+        $di->setShared(
+            'dispatcher' ,
+            function () use ($di) {
+                $dispatcher = new Dispatcher();
+                $dispatcher->setDefaultNamespace("Admin");
+
+                $eventsManager = $di->getShared('eventsManager');
+
+                $eventsManager->attach('dispatch' , new AdminSecurity($di));
+
+                $dispatcher->setEventsManager($eventsManager);
+
+                return $dispatcher;
+            }
+        );
+
+
         $auto_admin = new \AutoAdmin\Module();
         $auto_admin->registerServices($di);
 
-        $di->set(
+        $di->setShared(
             'admin_views_dir' ,
             function () {
                 return ADMINROOT . '/views/';
@@ -45,6 +71,17 @@ class Module
         );
 
         $di->set(
+            'session' ,
+            function () {
+
+                $session = new Session();
+                $session->start();
+
+                return $session;
+            }
+        );
+
+        $di->setShared(
             'config' ,
             function () use ($di) {
 
@@ -56,6 +93,7 @@ class Module
                 return $configFront;
             }
         );
+
     }
 
 }

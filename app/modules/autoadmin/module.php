@@ -4,14 +4,15 @@ namespace AutoAdmin;
 
 define('AUTOADMINROOT' , __DIR__);
 
-use AutoAdmin\Plugins\Security;
+
 use AutoAdmin\Helpers\EntityManager;
 use \Phalcon\DI;
 use \Phalcon\Loader;
 use \Phalcon\Mvc\View;
 use \Phalcon\Assets\Manager as AssetsManager ;
+use Phalcon\Mvc\ModuleDefinitionInterface;
 
-class Module
+class Module implements  ModuleDefinitionInterface
 {
 
     public function registerAutoloaders()
@@ -37,9 +38,6 @@ class Module
     public function registerServices($di)
     {
         $this->registerAutoloaders();
-
-        $eventsManager = $di->getShared('eventsManager');
-        $eventsManager->attach('dispatch' , new Security($di));
 
         $di->set(
             'view' ,

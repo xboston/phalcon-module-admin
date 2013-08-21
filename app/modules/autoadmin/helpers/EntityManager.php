@@ -21,6 +21,11 @@ class EntityManager extends \Phalcon\Mvc\User\Component
         return $this;
     }
 
+    public function setEntities( array $entityElements)
+    {
+        $this->_entities +=$entityElements;
+    }
+
     /**
      * @param string $entityName
      *

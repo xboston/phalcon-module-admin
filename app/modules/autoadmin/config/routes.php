@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @todo переписать на класс, наследующий extends Phalcon\Mvc\Router\Group
+ */
+
 $admin = new \Phalcon\Mvc\Router\Group(['namespace'  => 'Admin\Controllers','module'     => 'admin' ,'controller' => 'admin' ]);
 
 $admin->setPrefix('/admin');

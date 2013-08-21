@@ -1,16 +1,20 @@
 <?php
+/**
+ * @todo переписать на сервис
+ */
+
 namespace AutoAdmin\Widgets;
 
 class Breadcrumbs extends Widget
 {
 
-    private $_path = [];
+    protected $_path = [ ];
 
-    public function add($label, $href)
+    public function add($label , $href)
     {
 
         $this->_path[] = [
-            'label' => $label,
+            'label' => $label ,
             'href'  => $href
         ];
 
@@ -21,8 +25,6 @@ class Breadcrumbs extends Widget
     protected function beforeRender()
     {
 
-        $this->_view->setVar('path', $this->_path);
-
+        $this->_view->setVar('path' , $this->_path);
     }
-
 }

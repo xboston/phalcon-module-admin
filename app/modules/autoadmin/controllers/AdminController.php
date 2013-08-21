@@ -2,7 +2,7 @@
 
 namespace AutoAdmin\Controllers;
 
-use AutoAdmin\Helpers\Auth;
+use AutoAdmin\Helpers\AdminAuthHelper;
 use AutoAdmin\Models\AdminUsers;
 
 class AdminController extends BaseController
@@ -16,35 +16,36 @@ class AdminController extends BaseController
     public function loginAction()
     {
 
+
+
         if ( $this->request->isPost() && $this->security->checkToken() ) {
 
-            $this->view->disable();
+            //$this->view->disable();
 
-            $username = $this->request->getPost('username');
-            $password = $this->request->getPost('password');
+            $username = $this->request->getPost('username' , 'string');
+            $password = $this->request->getPost('password' , 'string');
 
-            if ( !Auth::instance()->login($username , $password) ) {
+            if ( !AdminAuthHelper::instance()->login($username , $password) ) {
                 $this->flashSession->error('Неверное имя пользователя или пароль');
 
+                //return false;
             } else {
 
                 /** @var AdminUsers $user */
-                $user = Auth::instance()->getUser();
+                $user = AdminAuthHelper::instance()->getUser();
                 $user->save([ 'last_login' => date(DATE_ISO8601) ]);
+
+                $this->flashSession->notice(sprintf('С возвращением, %s' , $user->username));
+                $this->response->redirect([ 'for' => 'admin' ]);
             }
-            $this->response->redirect([ 'for' => 'admin' ]);
+
         }
-
-        $this->flashSession->error('Ошибка безопасности');
-
-        // тут надо указывать совсем другой лайут, с меньшим числом проверок авторизации (юзер итак на странице логина - он точно не в теме, же)
-        //$this->view->setLayout('login');
-
+        $this->view->setLayout('login');
     }
 
     public function logoutAction()
     {
-        Auth::instance()->logout();
+        AdminAuthHelper::instance()->logout();
 
         return $this->response->redirect([ 'for' => 'admin' ]);
     }

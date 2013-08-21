@@ -43,8 +43,8 @@ abstract class CRUDController extends BaseController
         $items  = $entity::find();
         $pages  = new ModelPaginator([
                                      'data'  => $items ,
-                                     'limit' => 1 ,
-                                     'page'  => $this->dispatcher->getParam('page' , 'int') ? : 1
+                                     'limit' => 15 ,
+                                     'page'  => $this->request->get('page' , 'int') ? : 1
                                      ]);
 
         $model_reader = new ModelReader($entity , Field::GROUP_TABLE);
@@ -55,12 +55,15 @@ abstract class CRUDController extends BaseController
             $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entity ])
         );
 
+        // Get the paginated results
+        $page = $pages->getPaginate();
+
         $this->view->pick('CRUD/list');
         $this->view->setVars(
             [
-            'items'     => $items ,
+            'items'     => $page->items ,
             'fields'    => $fields ,
-            'paginator' => $pages
+            'paginator' => $page
             ]
         );
     }

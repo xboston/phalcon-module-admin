@@ -12,11 +12,11 @@ class CrudController extends \AutoAdmin\Controllers\CRUDController
     {
         parent::initialize();
 
-        $this->entityManager
-            ->add('Posts' ,['title' => 'Посты'])
-            ->add('Categories' ,['title' => 'Категории постов'])
-            ->add('Users' , ['title' => 'Пользователи'])
-            ->add('Full' , ['title' => 'CRUD test'])
+        $entityElements = $this->config->entityElements;
+
+        $this->entityManager->setEntities($entityElements->toArray());
+
+        //$this->entityManager
             //->add('AutoAdmin\Models\AdminUsers',['title'=>'Администраторы']
             ;
     }

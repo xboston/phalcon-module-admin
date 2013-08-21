@@ -3,7 +3,7 @@
 /** @var \Phalcon\Mvc\View\Engine\Php $this */
 /** @var \Phalcon\Mvc\ModelInterface $items */
 /** @var \AutoAdmin\Helpers\FieldsCollection $fields */
-/** @var stdClass $paginator */
+/** @var \Phalcon\Paginator\ $paginator */
 
 $entityName = $this->dispatcher->getParam('entity');
 $createHref = $this->url->get(
@@ -77,3 +77,5 @@ $createHref = $this->url->get(
     <?php endforeach ?>
     </tbody>
 </table>
+
+<?php $paginator->total_pages == 0 ? : $this->partial('elements/pagination') ?>
