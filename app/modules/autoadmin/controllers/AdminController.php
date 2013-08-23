@@ -8,25 +8,26 @@ use AutoAdmin\Models\AdminUsers;
 class AdminController extends BaseController
 {
 
-    public function indexAction()
-    {
-
-    }
-
     public function loginAction()
     {
 
-        if ( $this->request->isPost() && $this->security->checkToken() ) {
+        if ( $this->request->isPost() ) {
 
-            //$this->view->disable();
+            if ( !$this->security->checkToken() ) {
+
+                $this->flashSession->error('Токен невалиден');
+
+                return false;
+            }
 
             $username = $this->request->getPost('username' , 'string');
             $password = $this->request->getPost('password' , 'string');
 
             if ( !AdminAuthHelper::instance()->login($username , $password) ) {
+
                 $this->flashSession->error('Неверное имя пользователя или пароль');
 
-                //return false;
+                return false;
             } else {
 
                 /** @var AdminUsers $user */
@@ -38,7 +39,6 @@ class AdminController extends BaseController
             }
 
         }
-        $this->view->setLayout('login');
     }
 
     public function logoutAction()

@@ -38,7 +38,7 @@ class BaseController extends Controller
 
         $this->flashSession->setCssClasses(
             array(
-                 'error' => 'alert alert-error' ,
+                 'error' => 'alert alert-danger' ,
                  'success' => 'alert alert-success' ,
                  'notice' => 'alert alert-info' ,
             )

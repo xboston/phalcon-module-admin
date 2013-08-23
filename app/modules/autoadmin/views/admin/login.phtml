@@ -1,19 +1,25 @@
 <?php
 
 /** @var \Phalcon\Mvc\View\Engine\Php $this */
-/** @var \Phalcon\Tag $this->tag */
+/** @var \Phalcon\Tag $this ->tag */
 
-$this->getDi()->get('assets')
+$this->assets
     ->collection('autoadmin_css')
     ->addCss('css/login.css');
 
 ?>
 <div class="container">
+
     <?php echo $this->flashSession->output(); ?>
-    <form class="form-signin" action="<?php echo $this->url->get(array('for' => 'admin-login')) ?>" method="post">
+
+    <form class="form-signin" action="<?php echo $this->url->get(array( 'for' => 'admin-login' )) ?>" method="post">
+
         <h2 class="form-signin-heading">Авторизация</h2>
-        <?php echo $this->tag->textField(['username', 'size' => '30', 'class' => 'form-control','placeholder1'=>'Логин','autofocus'=>true]); ?>
-        <?php echo $this->tag->passwordField(['password', 'size' => '30', 'class' => 'form-control','placeholder1'=>'Пароль',]); ?>
-        <?php echo $this->tag->submitButton(['Войти', 'class' => 'btn btn-lg btn-primary btn-block']) ?>
+
+        <?php echo $this->tag->textField([ 'username' , 'size' => '30' , 'class' => 'form-control' , 'placeholder1' => 'Логин' , 'autofocus' => true ]); ?>
+        <?php echo $this->tag->passwordField([ 'password' , 'size' => '30' , 'class' => 'form-control' , 'placeholder1' => 'Пароль' , ]); ?>
+        <?php echo $this->tag->submitButton([ 'Войти' , 'class' => 'btn btn-lg btn-primary btn-block' ]) ?>
+        <?php echo $this->tag->hiddenField([ $this->security->getTokenKey() , 'value' => $this->security->getToken() , 'class' => 'btn btn-lg btn-primary btn-block' ]) ?>
     </form>
+
 </div>
