@@ -2,10 +2,10 @@
 
 namespace AutoAdmin\Controllers;
 
-use Phalcon\Mvc\Controller;
-use Phalcon\Exception;
-use AutoAdmin\Widgets\Widget;
-use  \Phalcon\Assets\Filters\None as NullFilter;
+use \Phalcon\Mvc\Controller;
+use \Phalcon\Exception;
+use \AutoAdmin\Widgets\Widget;
+use \Phalcon\Assets\Filters\None as NullFilter;
 
 /**
  * @property \Phalcon\Assets\Manager assets
@@ -20,7 +20,8 @@ class BaseController extends Controller
             ->collection('autoadmin_css')
             ->setTargetPath('css/final.css')
             ->setTargetUri('assets/css/final.css')
-            ->addCss('css/flatly.css')
+            //->addCss('css/flatly.css')
+            ->addCss('css/bootstrap.css')
             ->addCss('css/admin-style.css')
             ->join(true)
             ->addFilter(new NullFilter());

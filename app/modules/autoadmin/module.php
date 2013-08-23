@@ -5,14 +5,14 @@ namespace AutoAdmin;
 define('AUTOADMINROOT' , __DIR__);
 
 
-use AutoAdmin\Helpers\EntityManager;
+use \AutoAdmin\Helpers\EntityManager;
 use \Phalcon\DI;
 use \Phalcon\Loader;
 use \Phalcon\Mvc\View;
-use \Phalcon\Assets\Manager as AssetsManager ;
-use Phalcon\Mvc\ModuleDefinitionInterface;
+use \Phalcon\Assets\Manager as AssetsManager;
+use \Phalcon\Mvc\ModuleDefinitionInterface;
 
-class Module implements  ModuleDefinitionInterface
+class Module implements ModuleDefinitionInterface
 {
 
     public function registerAutoloaders()
@@ -68,6 +68,7 @@ class Module implements  ModuleDefinitionInterface
             }
         );
 
+        return $di;
     }
 
 }

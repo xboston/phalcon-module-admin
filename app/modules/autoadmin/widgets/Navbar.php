@@ -17,6 +17,4 @@ class Navbar extends Widget
         ]);
 
     }
-
-
 }

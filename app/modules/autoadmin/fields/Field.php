@@ -151,8 +151,8 @@ class Field
      */
     public function render($layout = 'edit')
     {
-        $column     = $this->_params->getParam('name');
-        $prefix     = $this->_params->getParam('source');
+        $column = $this->_params->getParam('name');
+        $prefix = $this->_params->getParam('source');
 
         $field_id   = ($prefix ? $prefix . '_' : '') . $column;
         $field_name = $prefix ? $prefix . '[' . $column . ']' : $column;
@@ -160,15 +160,18 @@ class Field
         $defaultParams = $this->_params->getParams();
         unset($defaultParams['name']);
 
-        $tag_params = array_merge(
+        $tagParams = array_merge(
             [ $field_name ] ,
             $this->_params->getParam('tag' , [ ]) ,
             [ 'value' => $this->getValue() , 'id' => $field_id ] + $defaultParams
         );
 
-        $layout     = $this->_params->getParam('options.layout' , $layout);
+        // все параметры уже добавлены, в общем списке они не нужны
+        unset($tagParams['tag']);
 
-        $this->beforeRender($tag_params);
+        $layout = $this->_params->getParam('options.layout' , $layout);
+
+        $this->beforeRender($tagParams);
 
         $this->_view->setLayout($layout);
         $this->_view->setVars(
@@ -176,7 +179,7 @@ class Field
             'field'  => $this ,
             'model'  => $this->_model ,
             'params' => $this->_params ,
-            'tag'    => $tag_params
+            'tag'    => $tagParams
             ]
         );
 

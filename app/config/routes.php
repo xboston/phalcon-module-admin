@@ -30,5 +30,6 @@ $router->add('/cart/confirm' , 'Cart::confirm')->setName('cart-confirm');
 
 
 $router->mount(require_once COREROOT . '/app/modules/autoadmin/config/routes.php');
+$router->mount(require_once COREROOT . '/app/modules/admin/config/routes.php');
 
 return $router;

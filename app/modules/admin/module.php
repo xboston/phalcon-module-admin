@@ -4,12 +4,12 @@ namespace Admin;
 
 define('ADMINROOT' , __DIR__);
 
-use Phalcon\DI;
-use Phalcon\Loader;
-use Phalcon\Mvc\ModuleDefinitionInterface;
-use Phalcon\Mvc\Dispatcher;
-use AutoAdmin\Plugins\AdminSecurity;
-use Phalcon\Session\Adapter\Files as Session;
+use \Phalcon\DI;
+use \Phalcon\Loader;
+use \Phalcon\Mvc\ModuleDefinitionInterface;
+use \Phalcon\Mvc\Dispatcher;
+use \Phalcon\Session\Adapter\Files as Session;
+use \AutoAdmin\Plugins\AdminSecurity;
 
 class Module implements ModuleDefinitionInterface
 {
@@ -31,7 +31,6 @@ class Module implements ModuleDefinitionInterface
             ] ,
             true
         );
-
 
         $loader->register();
     }
@@ -70,7 +69,7 @@ class Module implements ModuleDefinitionInterface
             }
         );
 
-        $di->set(
+        $di->setShared(
             'session' ,
             function () {
 

@@ -4,16 +4,16 @@
  * @todo переписать на класс, наследующий extends Phalcon\Mvc\Router\Group
  */
 
-$admin = new \Phalcon\Mvc\Router\Group(['namespace'  => 'Admin\Controllers','module'     => 'admin' ,'controller' => 'admin' ]);
+$autoAdminRouter = new \Phalcon\Mvc\Router\Group(['namespace'  => 'Admin\Controllers','module'     => 'admin' ,'controller' => 'admin' ]);
 
-$admin->setPrefix('/admin');
+$autoAdminRouter->setPrefix('/admin');
 
-$admin->add(
+$autoAdminRouter->add(
     '' ,['controller' => 'crud' ,'action'     => 'index']
 )->setName('admin');
 
-$admin->add(
-    '/{entity:[a-zA-Z]+}/{action:(edit|delete)}/:params' ,
+$autoAdminRouter->add(
+    '/auto/{entity:[a-zA-Z]+}/{action:(edit|delete)}/:params' ,
     [
     'controller' => 'crud' ,
     'entity'     => 1 ,
@@ -24,8 +24,8 @@ $admin->add(
 
 // такие действия должны быть только методом POST + проверка токенов
 //$admin->addPost(
-$admin->addPost(
-    '/{entity:[a-zA-Z]+}/{action:(save|delete)}/:params' ,
+$autoAdminRouter->addPost(
+    '/auto/{entity:[a-zA-Z]+}/{action:(save|delete)}/:params' ,
     [
     'controller' => 'crud' ,
     'entity'     => 1 ,
@@ -34,8 +34,8 @@ $admin->addPost(
     ]
 )->setName('admin-action-post');
 
-$admin->addGet(
-    '/{entity}' ,
+$autoAdminRouter->addGet(
+    '/auto/{entity}' ,
     [
     'controller' => 'crud' ,
     'entity'     => 1 ,
@@ -43,7 +43,7 @@ $admin->addGet(
     ]
 )->setName('admin-entity');
 
-$admin->add('/login' , [ 'action' => 'login' ])->setName('admin-login');
-$admin->add('/logout' , [ 'action' => 'logout' ])->setName('admin-logout');
+$autoAdminRouter->add('/login' , [ 'action' => 'login' ])->setName('admin-login');
+$autoAdminRouter->add('/logout' , [ 'action' => 'logout' ])->setName('admin-logout');
 
-return $admin;
+return $autoAdminRouter;
