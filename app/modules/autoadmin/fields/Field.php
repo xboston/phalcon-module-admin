@@ -154,20 +154,24 @@ class Field
         $column = $this->_params->getParam('name');
         $prefix = $this->_params->getParam('source');
 
-        $field_id   = ($prefix ? $prefix . '_' : '') . $column;
-        $field_name = $prefix ? $prefix . '[' . $column . ']' : $column;
+        $fieldId   = ($prefix ? $prefix . '_' : '') . $column;
+        $fieldName = $prefix ? $prefix . '[' . $column . ']' : $column;
 
         $defaultParams = $this->_params->getParams();
         unset($defaultParams['name']);
 
         $tagParams = array_merge(
-            [ $field_name ] ,
+            [ $fieldName ] ,
             $this->_params->getParam('tag' , [ ]) ,
-            [ 'value' => $this->getValue() , 'id' => $field_id ] + $defaultParams
+            [ 'value' => $this->getValue() , 'id' => $fieldId ] + $defaultParams
         );
+
+        $this->_params->setParam('id',$fieldId);
 
         // все параметры уже добавлены, в общем списке они не нужны
         unset($tagParams['tag']);
+
+        $tagParams['class'] = isset($tagParams['class']) ? $tagParams['class'].' form-control' : 'form-control';
 
         $layout = $this->_params->getParam('options.layout' , $layout);
 

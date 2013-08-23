@@ -22,10 +22,12 @@ $createHref = $this->url->get(
         <a href="<?php echo $createHref ?>" class="btn"><i class="glyphicon glyphicon-plus"></i> Создать</a>
     </div>
 
-    <form class="pull-right">
-        <div class="input-group">
-            <input type="text" class="col-md-2 search-query">
-            <button type="submit" class="btn">Найти</button>
+    <form class="col-lg-3 pull-right input-group" role="search">
+        <input type="text" class="form-control" placeholder="Найти">
+        <div class="input-group-btn btn-group">
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span> Найти
+            </button>
         </div>
     </form>
 

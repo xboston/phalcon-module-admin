@@ -20,8 +20,8 @@ class BaseController extends Controller
             ->collection('autoadmin_css')
             ->setTargetPath('css/final.css')
             ->setTargetUri('assets/css/final.css')
-            //->addCss('css/flatly.css')
-            ->addCss('css/bootstrap.css')
+            //->addCss('css/bootstrap.css')
+            ->addCss('css/flatly.css')
             ->addCss('css/admin-style.css')
             ->join(true)
             ->addFilter(new NullFilter());

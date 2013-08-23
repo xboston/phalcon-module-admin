@@ -13,6 +13,7 @@ use AutoAdmin\Helpers\AdminAuthHelper;
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
+            <span class="brand-logo"></span>
             <a class="navbar-brand" href="/admin">
                 <?php echo $this->config->site->name ?>
             </a>
@@ -27,14 +28,4 @@ use AutoAdmin\Helpers\AdminAuthHelper;
         <?php echo $this->getContent() ?>
     </div>
 
-</div>
-
-<div class="navbar navbar-fixed-bottom row visible-lg phadmin-footer">
-    <div class="container">
-        <ul class="nav pull-right">
-            <li>
-                <a href="#">&#169; 2013 - <?php echo sprintf('%s - %s' , date('Y') , $this->config->site->name); ?></a>
-            </li>
-        </ul>
-    </div>
 </div>

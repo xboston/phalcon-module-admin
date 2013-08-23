@@ -15,22 +15,20 @@ $startNum = $paginator->current;
 $entityName = $this->dispatcher->getParam('entity');
 
 ?>
-<div class="pagination">
-    <ul>
-        <li<?php echo 1 == $paginator->current ? ' class="disabled"' : '' ?>><a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ]) ?>">Первая</a></li>
-        <li<?php echo $paginator->before == $paginator->current ? ' class="disabled"' : '' ?>>
-            <a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ] , [ 'page' => $paginator->before ]) ?>">&larr; Предыдущая</a>
+<ul class="pagination">
+    <li<?php echo 1 == $paginator->current ? ' class="disabled"' : '' ?>><a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ]) ?>">Первая</a></li>
+    <li<?php echo $paginator->before == $paginator->current ? ' class="disabled"' : '' ?>>
+        <a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ] , [ 'page' => $paginator->before ]) ?>">&larr; Предыдущая</a>
+    </li>
+    <?php for ( $pageNum = $startNum; $pageNum <= $pagesLimit; $pageNum++ ): ?>
+        <li<?php echo $pageNum == $paginator->current ? ' class="active"' : '' ?>>
+            <a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ] , [ 'page' => $pageNum ]) ?>"><?php echo $pageNum ?></a>
         </li>
-        <?php for ( $pageNum = $startNum; $pageNum <= $pagesLimit; $pageNum++ ): ?>
-            <li<?php echo $pageNum == $paginator->current ? ' class="active"' : '' ?>>
-                <a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ] , [ 'page' => $pageNum ]) ?>"><?php echo $pageNum ?></a>
-            </li>
-        <?php endfor; ?>
-        <li<?php echo $paginator->next == $paginator->current ? ' class="disabled"' : '' ?>>
-            <a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ] , [ 'page' => $paginator->next ]) ?>">Следующая &rarr;</a>
-        </li>
-        <li<?php echo $paginator->last == $paginator->current ? ' class="disabled"' : '' ?>>
-            <a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ] , [ 'page' => $paginator->last ]) ?>">Последняя (<?php echo $paginator->total_pages ?>)</a>
-        </li>
-    </ul>
-</div>
+    <?php endfor; ?>
+    <li<?php echo $paginator->next == $paginator->current ? ' class="disabled"' : '' ?>>
+        <a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ] , [ 'page' => $paginator->next ]) ?>">Следующая &rarr;</a>
+    </li>
+    <li<?php echo $paginator->last == $paginator->current ? ' class="disabled"' : '' ?>>
+        <a href="<?php echo $this->url->get([ 'for' => 'admin-entity' , 'entity' => $entityName ] , [ 'page' => $paginator->last ]) ?>">Последняя (<?php echo $paginator->total_pages ?>)</a>
+    </li>
+</ul>

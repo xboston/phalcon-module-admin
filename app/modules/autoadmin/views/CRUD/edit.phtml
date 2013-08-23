@@ -25,43 +25,45 @@ $back_url = $this->url->get(
 );
 
 ?>
+<div class="container">
+    <form action="<?php echo $form_action ?>" method="POST" class="form-horizontal">
 
-<form action="<?php echo $form_action ?>" method="POST" class="form-horizontal well" role="form">
-
-    <div class="page-header">
-        <div class="pull-right">
-            <a href="<?php echo $back_url ?>" class="btn"><i class="glyphicon glyphicon-backward"></i> Назад</a>
-            <input type="submit" value="Cохранить" class="btn btn-success"/>
+        <div class="page-header">
+            <div class="pull-right">
+                <a href="<?php echo $back_url ?>" class="btn"><i class="glyphicon glyphicon-backward"></i> Назад</a>
+                <input type="submit" value="Cохранить" class="btn btn-success"/>
+            </div>
+            <h1><?php echo $this->entityManager->getProperty($entity , 'title') ?> / Редактировать</h1>
         </div>
-        <h1><?php echo $this->entityManager->getProperty($entity , 'title') ?> / Редактировать</h1>
-    </div>
 
-    <?php
-    foreach ( $fields->toArray() as $field ) :
-        if ( $field instanceof ExternalField ) {
-            continue;
-        }
+        <?php
+        foreach ( $fields->toArray() as $field ) :
+            if ( $field instanceof ExternalField ) {
+                continue;
+            }
 
-        echo $field->render($action);
-    endforeach;
-    ?>
-    <div class="control-group btn-toolbar">
-        <div class="controls btn-group">
-            <input class="btn btn-success" type="submit" value="Применить"/>
-            <input class="btn btn-success" type="submit" value="Сохранить"/>
+            echo $field->render($action);
+        endforeach;
+        ?>
+
+        <div class="control-group btn-toolbar">
+            <div class="btn-group">
+                <input class="btn btn-success" type="submit" value="Применить"/>
+                <input class="btn btn-success" type="submit" value="Сохранить"/>
+            </div>
+            <a class="btn" href="<?php echo $back_url ?>">Закрыть</a>
         </div>
-        <a class="btn" href="<?php echo $back_url ?>">Закрыть</a>
-    </div>
-</form>
+        <div class="form-horizontal">
+            <?php
+            foreach ( $fields->toArray() as $field ) {
+                if ( !$field instanceof ExternalField ) {
+                    continue;
+                }
 
-<div class="form-horizontal">
-    <?php
-    foreach ( $fields->toArray() as $field ) {
-        if ( !$field instanceof ExternalField ) {
-            continue;
-        }
+                echo $field->render($action);
+            }
+            ?>
+        </div>
 
-        echo $field->render($action);
-    }
-    ?>
+    </form>
 </div>

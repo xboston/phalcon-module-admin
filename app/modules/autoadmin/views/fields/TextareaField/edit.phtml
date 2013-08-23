@@ -16,7 +16,7 @@ if ($params->getParam('editor')) {
         ->addJs('admin_assets/js/plugins/ckeditor/ckeditor.js')
         ->addJs('admin_assets/js/fields/editor/editor.js');
 
-    $tag['class'] = 'editor';
+    $tag['class'] = 'editor form-control';
 }
 
 echo $this->tag->textArea($tag);

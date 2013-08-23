@@ -11,10 +11,14 @@
 .brand-logo
 {
     background: url('/assets/img/logo.png') no-repeat left center;
-    height: 40px;
+    height: 60px;
     width: 90px;
     display: block;
     float: left;
     filter: gray;
     -webkit-filter: grayscale(70%);
+}
+
+#phadmin-footer{
+    font-size: 12px;
 }
