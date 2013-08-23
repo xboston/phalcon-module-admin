@@ -10,30 +10,29 @@ use AutoAdmin\Widgets\Widget;
 use AutoAdmin\Helpers\AdminAuthHelper;
 
 ?>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <span class="brand-logo"></span>
-            <a class="brand" href="/admin">
-                <?php echo $this->config->site->name ?>
-            </a>
-
-                <div class="nav-collapse collapse">
-                    <?php echo Widget::factory('Navbar')->render(); ?>
-                    <ul class="nav pull-right">
-                        <li><a href="/admin/logout"><?php echo AdminAuthHelper::instance()->getUser()->username ?>, выйти</a></li>
-                    </ul>
-                </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!--<span class="brand-logo"></span>-->
+        <a class="navbar-brand" href="/admin">
+            <?php echo $this->config->site->name ?>
+        </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <?php echo Widget::factory('Navbar')->render(); ?>
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="/admin/logout"><?php echo AdminAuthHelper::instance()->getUser()->username ?>, выйти</a></li>
+            </ul>
         </div>
     </div>
 </div>
 
-<div class="container-fluid content">
+<div class="container content">
 
     <?php echo Widget::factory('Breadcrumbs' , true)->render(); ?>
 
@@ -45,14 +44,12 @@ use AutoAdmin\Helpers\AdminAuthHelper;
 
 </div>
 
-<div class="navbar navbar-fixed-bottom row-fluid visible-desktop phadmin-footer">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <ul class="nav pull-right">
-                <li>
-                    <a href="#">&#169; 2013 - <?php echo sprintf('%s - %s. phalcon: %s' , date('Y') , $this->config->site->name, \Phalcon\Version::get()); ?></a>
-                </li>
-            </ul>
-        </div>
+<div class="navbar navbar-fixed-bottom row visible-lg phadmin-footer">
+    <div class="container">
+        <ul class="nav pull-right">
+            <li>
+                <a href="#">&#169; 2013 - <?php echo sprintf('%s - %s. phalcon: %s' , date('Y') , $this->config->site->name, \Phalcon\Version::get()); ?></a>
+            </li>
+        </ul>
     </div>
 </div>

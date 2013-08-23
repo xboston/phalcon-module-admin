@@ -5,10 +5,8 @@
  * @var string $active
  *
  */
-
 ?>
-
-<ul class="nav">
+<ul class="nav navbar-nav">
     <?php foreach ($navItems as $entity => $label): ?>
         <li<?php echo $entity==$active ? ' class="active"' : '' ?>><a href="<?php echo $this->url->get(['for' => 'admin-entity', 'entity' => $entity]) ?>"><?php echo $label; ?></a></li>
     <?php endforeach; ?>

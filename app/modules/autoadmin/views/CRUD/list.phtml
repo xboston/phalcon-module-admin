@@ -19,12 +19,12 @@ $createHref = $this->url->get(
 <div class="page-header">
 
     <div class="pull-right">
-        <a href="<?php echo $createHref ?>" class="btn"><i class="icon-plus"></i> Создать</a>
+        <a href="<?php echo $createHref ?>" class="btn"><i class="glyphicon glyphicon-plus"></i> Создать</a>
     </div>
 
-    <form class="form-search pull-right">
-        <div class="input-append">
-            <input type="text" class="span2 search-query">
+    <form class="pull-right">
+        <div class="input-group">
+            <input type="text" class="col-md-2 search-query">
             <button type="submit" class="btn">Найти</button>
         </div>
     </form>
@@ -70,8 +70,8 @@ $createHref = $this->url->get(
             }
             ?>
             <td class="items-list-buttons-cell">
-                <a class="btn btn-mini" title="Изменить" href="<?php echo $editHref ?>"><i class="icon-edit"></i></a>
-                <a class="btn btn-mini" title="Удалить" href="<?php echo $deleteHref ?>"><i class="icon-remove"></i></a>
+                <a class="btn btn-mini" title="Изменить" href="<?php echo $editHref ?>"><i class="glyphicon glyphicon-edit"></i></a>
+                <a class="btn btn-mini" title="Удалить" href="<?php echo $deleteHref ?>"><i class="glyphicon glyphicon-remove"></i></a>
             </td>
         </tr>
     <?php endforeach ?>

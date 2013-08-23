@@ -5,8 +5,8 @@
 /** @var \AutoAdmin\Models\AdminUsers[] $users */
 
 ?>
-<div class="row-fluid">
-    <div class="span6">
+<div class="row">
+    <div class="col-md-6">
         <div class="page-header" style="margin-top: 0;">
             <h2>Сущности</h2>
         </div>
@@ -14,8 +14,8 @@
             <thead>
             <tr>
                 <th>Сущность</th>
-                <th class="span1">Записей</th>
-                <th class="span1"></th>
+                <th class="col-md-1">Записей</th>
+                <th class="col-md-1"></th>
             </tr>
             </thead>
             <tbody>
@@ -27,10 +27,10 @@
                 ?>
                 <tr>
                     <td><a href="<?php echo $list_href ?>"><?php echo $params['title'] ?></a></td>
-                    <td class="span1"><?php echo number_format($items , 0 , '.' , ' ') ?></td>
-                    <td class="span1">
+                    <td class="col-md-1"><?php echo number_format($items , 0 , '.' , ' ') ?></td>
+                    <td class="col-md-1">
                         <a href="<?php echo $new_href ?>" class="btn btn-mini" title="Добавить запись">
-                            <i class="icon-plus"></i>
+                            <i class="glyphicon glyphicon-plus"></i>
                         </a>
                     </td>
                 </tr>
@@ -38,7 +38,7 @@
             </tbody>
         </table>
     </div>
-    <div class="span6">
+    <div class="col-md-6">
         <div class="page-header" style="margin-top: 0;">
             <h2>Администраторы</h2>
         </div>
@@ -46,7 +46,7 @@
             <thead>
             <tr>
                 <th>Логин</th>
-                <th class="span4">Последний визит</th>
+                <th class="col-md-4">Последний визит</th>
             </tr>
             </thead>
             <tbody>

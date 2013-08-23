@@ -16,8 +16,6 @@ class AdminController extends BaseController
     public function loginAction()
     {
 
-
-
         if ( $this->request->isPost() && $this->security->checkToken() ) {
 
             //$this->view->disable();

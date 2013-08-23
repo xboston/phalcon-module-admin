@@ -14,7 +14,7 @@ class Posts extends \BaseModel
 
     /**
      * @Title
-     * @Field(type: text, label: 'Заголовок', tag: {class: 'input-xlarge', maxlength: 25 })
+     * @Field(type: text, label: 'Заголовок', tag: {class: 'input-lg', maxlength: 25 })
      * @FormField()
      * @TableField(options: { layout: link })
      * @var string
