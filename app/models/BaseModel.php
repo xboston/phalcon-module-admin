@@ -11,6 +11,9 @@ class BaseModel extends \Phalcon\Mvc\Model
     /** @var string */
     protected $entity_type;
 
+    /**
+     * Типичные базовые настойки инициализации моделей
+     */
     public function initialize()
     {
         $this->keepSnapshots(false);
@@ -18,6 +21,8 @@ class BaseModel extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Вывод списка сообщений ошибок в строку
+     *
      * @param bool $asString
      *
      * @return \Phalcon\Mvc\Model\MessageInterface[]|string
