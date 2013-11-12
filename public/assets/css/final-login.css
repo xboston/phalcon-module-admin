@@ -7458,6 +7458,10 @@ input[type="color"]:focus,
     filter: gray;
     -webkit-filter: grayscale(70%);
 }
+
+#phadmin-footer{
+    font-size: 12px;
+}
 .form-signin {
     max-width: 330px;
     padding: 15px;
