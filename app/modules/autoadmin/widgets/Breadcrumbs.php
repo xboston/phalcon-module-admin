@@ -3,28 +3,29 @@
  * @todo переписать на сервис
  */
 
-namespace AutoAdmin\Widgets;
+namespace AutoAdmin\Widgets {
 
-class Breadcrumbs extends Widget
-{
-
-    protected $_path = [ ];
-
-    public function add($label , $href)
+    class Breadcrumbs extends Widget
     {
 
-        $this->_path[] = [
-            'label' => $label ,
-            'href'  => $href
-        ];
+        protected $_path = [ ];
 
-        return $this;
+        public function add($label , $href)
+        {
 
-    }
+            $this->_path[] = [
+                'label' => $label ,
+                'href'  => $href
+            ];
 
-    protected function beforeRender()
-    {
+            return $this;
 
-        $this->_view->setVar('path' , $this->_path);
+        }
+
+        protected function beforeRender()
+        {
+
+            $this->_view->setVar('path' , $this->_path);
+        }
     }
 }

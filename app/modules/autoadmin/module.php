@@ -2,7 +2,7 @@
 
 namespace AutoAdmin;
 
-define('AUTOADMINROOT' , __DIR__);
+define('AUTOADMINMODULEROOT' , __DIR__);
 
 
 use \AutoAdmin\Helpers\EntityManager;
@@ -34,6 +34,8 @@ class Module implements ModuleDefinitionInterface
 
     /**
      * @param \Phalcon\DiInterface $di
+     *
+     * @return \Phalcon\DiInterface
      */
     public function registerServices($di)
     {
@@ -43,7 +45,7 @@ class Module implements ModuleDefinitionInterface
             'view' ,
             function () use ($di) {
                 $view = new View();
-                $view->setViewsDir(AUTOADMINROOT . '/views/');
+                $view->setViewsDir(AUTOADMINMODULEROOT . '/views/');
 
                 return $view;
             }
@@ -61,7 +63,7 @@ class Module implements ModuleDefinitionInterface
             function () {
                 return new AssetsManager(
                     [
-                    'sourceBasePath' => AUTOADMINROOT . '/assets/' ,
+                    'sourceBasePath' => AUTOADMINMODULEROOT . '/assets/' ,
                     'targetBasePath' => PUBLICROOT . '/assets/'
                     ]
                 );

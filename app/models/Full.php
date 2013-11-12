@@ -4,6 +4,8 @@
 class Full extends \Phalcon\Mvc\Model
 {
 
+    use \Timestampable
+
     /**
      * @Primary
      * @FormField(type: hidden)

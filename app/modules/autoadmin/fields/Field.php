@@ -58,7 +58,7 @@ class Field
         $type      = $this->getType();
 
         if ( !file_exists($views_dir . $type) ) {
-            $views_dir = AUTOADMINROOT . '/views/fields/';
+            $views_dir = AUTOADMINMODULEROOT . '/views/fields/';
         }
 
         $this->_view = new View();

@@ -12,6 +12,7 @@ use \AutoAdmin\Widgets\Widget;
 
 /**
  * @property EntityManager entityManager
+ * @property \Phalcon\Config config
  */
 abstract class CRUDController extends BaseController
 {

@@ -1,84 +1,85 @@
 <?php
 
 
-namespace AutoAdmin\Widgets;
+namespace AutoAdmin\Widgets {
 
-abstract class Widget extends \Phalcon\Mvc\User\Component
-{
-
-    protected $_view;
-
-    private static $_instances;
-
-    /**
-     * @param string $widgetName
-     * @param bool $single
-     * @return bool|mixed
-     */
-    public static function factory($widgetName, $single = false)
+    abstract class Widget extends \Phalcon\Mvc\User\Component
     {
 
-        if (!$single || empty(self::$_instances[$widgetName])){
+        protected $_view;
 
-            $class = $widgetName;
-            if ( ! class_exists($class)) {
-                $class = __NAMESPACE__ . '\\' . $class;
+        private static $_instances;
+
+        /**
+         * @param string $widgetName
+         * @param bool $single
+         * @return bool|mixed
+         */
+        public static function factory($widgetName, $single = false)
+        {
+
+            if (!$single || empty(self::$_instances[$widgetName])){
+
+                $class = $widgetName;
+                if ( ! class_exists($class)) {
+                    $class = __NAMESPACE__ . '\\' . $class;
+                }
+
+                if ( ! class_exists($class)) {
+                    return false;
+                }
+
+                $instance = new $class;
+
+                if ($single){
+                    self::$_instances[$widgetName] = $instance;
+                }
+
             }
 
-            if ( ! class_exists($class)) {
-                return false;
+            if ($single && empty($instance)){
+                $instance = self::$_instances[$widgetName];
             }
 
-            $instance = new $class;
+            return $instance;
+        }
 
-            if ($single){
-                self::$_instances[$widgetName] = $instance;
-            }
+        public function __construct()
+        {
+
+            $viewsDir = __DIR__ . '/../views/widgets/';
+
+            $this->_view = new \Phalcon\Mvc\View();
+            $this->_view->setViewsDir($viewsDir);
+
+            $this->initialize();
 
         }
 
-        if ($single && empty($instance)){
-            $instance = self::$_instances[$widgetName];
+        protected function initialize()
+        {
+
         }
 
-        return $instance;
-    }
+        protected function beforeRender()
+        {
 
-    public function __construct()
-    {
+        }
 
-        $viewsDir = __DIR__ . '/../views/widgets/';
+        public function render($layout = 'default')
+        {
 
-        $this->_view = new \Phalcon\Mvc\View();
-        $this->_view->setViewsDir($viewsDir);
+            $this->beforeRender();
 
-        $this->initialize();
+            preg_match('/[^\\\]+$/ui', get_called_class(), $matches);
+            $widgetName = strtolower($matches[0]);
 
-    }
+            $this->_view->setLayout($layout);
+            ob_start();
+            $this->_view->render($widgetName, $layout);
 
-    protected function initialize()
-    {
-
-    }
-
-    protected function beforeRender()
-    {
+            return ob_get_clean();
+        }
 
     }
-
-    public function render($layout = 'default')
-    {
-
-        $this->beforeRender();
-
-        preg_match('/[^\\\]+$/ui', get_called_class(), $matches);
-        $widgetName = strtolower($matches[0]);
-
-        $this->_view->setLayout($layout);
-        ob_start();
-        $this->_view->render($widgetName, $layout);
-
-        return ob_get_clean();
-    }
-
 }

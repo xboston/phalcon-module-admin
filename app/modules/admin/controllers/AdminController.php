@@ -1,8 +1,9 @@
 <?php
 
-namespace Admin\Controllers;
+namespace Admin\Controllers {
 
-class AdminController extends \AutoAdmin\Controllers\AdminController
-{
+    class AdminController extends \AutoAdmin\Controllers\AdminController
+    {
 
+    }
 }

@@ -4,12 +4,13 @@
  * @todo переписать на класс, наследующий extends Phalcon\Mvc\Router\Group
  */
 
-$autoAdminRouter = new \Phalcon\Mvc\Router\Group(['namespace'  => 'Admin\Controllers','module'     => 'admin' ,'controller' => 'admin' ]);
+$autoAdminRouter = new \Phalcon\Mvc\Router\Group([ 'namespace' => 'Admin\Controllers' , 'module' => 'admin' , 'controller' => 'admin' ]);
 
 $autoAdminRouter->setPrefix('/admin');
 
 $autoAdminRouter->add(
-    '' ,['controller' => 'crud' ,'action'     => 'index']
+    '' ,
+    [ 'controller' => 'crud' , 'action' => 'index' ]
 )->setName('admin');
 
 $autoAdminRouter->add(

@@ -1,24 +1,25 @@
 <?php
 
-namespace Admin\Controllers;
+namespace Admin\Controllers {
 
-/**
- * @property \AutoAdmin\Helpers\EntityManager entityManager
- */
-class CrudController extends \AutoAdmin\Controllers\CRUDController
-{
-
-    public function initialize()
+    /**
+     * @property \AutoAdmin\Helpers\EntityManager entityManager
+     */
+    class CrudController extends \AutoAdmin\Controllers\CRUDController
     {
-        parent::initialize();
 
-        $entityElements = $this->config->entityElements;
+        public function initialize()
+        {
+            parent::initialize();
 
-        $this->entityManager->setEntities($entityElements->toArray());
+            $entityElements = $this->config->entityElements;
 
-        //$this->entityManager
+            $this->entityManager->setEntities($entityElements->toArray());
+
+            //$this->entityManager
             //->add('AutoAdmin\Models\AdminUsers',['title'=>'Администраторы']
             ;
-    }
+        }
 
+    }
 }

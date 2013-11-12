@@ -1,19 +1,21 @@
 <?php
 
-namespace Admin\Controllers;
+namespace Admin\Controllers {
 
-use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View;
 
-class BaseController extends AdminController
-{
-
-    public function initialize()
+    class BaseController extends AdminController
     {
 
-        parent::initialize();
-        $this->view->setViewsDir(ADMINROOT . '/views/');
+        public function initialize()
+        {
 
-        $entityElements = $this->config->entityElements;
-        $this->entityManager->setEntities($entityElements->toArray());
+            parent::initialize();
+            $this->view->setViewsDir(ADMINROOT . '/views/');
+
+            $entityElements = $this->config->entityElements;
+
+            $this->entityManager->setEntities($entityElements->toArray());
+        }
     }
 }
