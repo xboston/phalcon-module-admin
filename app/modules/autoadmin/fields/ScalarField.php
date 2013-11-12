@@ -1,15 +1,16 @@
 <?php
 
-namespace AutoAdmin\Fields;
+namespace AutoAdmin\Fields {
 
-use Phalcon\Tag;
+    use Phalcon\Tag;
 
-class ScalarField extends Field
-{
-
-    public function beforeRender($params)
+    class ScalarField extends Field
     {
-        Tag::setDefault($params['id'], $params['value']);
-    }
 
+        public function beforeRender($params)
+        {
+            Tag::setDefault($params['id'], $params['value']);
+        }
+
+    }
 }

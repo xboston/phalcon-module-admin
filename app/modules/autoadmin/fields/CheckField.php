@@ -1,8 +1,9 @@
 <?php
 
-namespace AutoAdmin\Fields;
+namespace AutoAdmin\Fields {
 
-class CheckField extends Field
-{
+    class CheckField extends Field
+    {
 
+    }
 }

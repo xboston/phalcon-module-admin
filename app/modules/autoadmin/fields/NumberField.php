@@ -1,8 +1,9 @@
 <?php
 
-namespace AutoAdmin\Fields;
+namespace AutoAdmin\Fields {
 
-class NumberField extends Field
-{
+    class NumberField extends Field
+    {
 
+    }
 }

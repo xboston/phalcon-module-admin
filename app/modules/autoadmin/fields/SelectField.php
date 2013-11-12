@@ -1,8 +1,9 @@
 <?php
 
-namespace AutoAdmin\Fields;
+namespace AutoAdmin\Fields {
 
-class SelectField extends ScalarField
-{
+    class SelectField extends ScalarField
+    {
 
+    }
 }

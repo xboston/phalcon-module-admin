@@ -1,8 +1,9 @@
 <?php
 
-namespace AutoAdmin\Fields;
+namespace AutoAdmin\Fields {
 
-class ExternalField extends Field
-{
+    class ExternalField extends Field
+    {
 
+    }
 }

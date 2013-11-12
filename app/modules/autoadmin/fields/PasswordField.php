@@ -1,8 +1,9 @@
 <?php
 
-namespace AutoAdmin\Fields;
+namespace AutoAdmin\Fields {
 
-class PasswordField extends Field
-{
+    class PasswordField extends Field
+    {
 
+    }
 }

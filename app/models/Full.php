@@ -4,7 +4,7 @@
 class Full extends \Phalcon\Mvc\Model
 {
 
-    use \Timestampable
+    use \Timestampable;
 
     /**
      * @Primary
@@ -32,13 +32,13 @@ class Full extends \Phalcon\Mvc\Model
     public $slug;
 
     /**
-     * @FormField(type: textarea, label: 'Text + editor', editor: true)
+     * @FormField(type: textArea, label: 'Text + editor', editor: true)
      * @var string
      */
     public $description;
 
     /**
-     * @FormField(type: textarea, label: 'Text', editor: false )
+     * @FormField(type: textArea, label: 'Text', editor: false )
      * @var string
      */
     public $raw_html;

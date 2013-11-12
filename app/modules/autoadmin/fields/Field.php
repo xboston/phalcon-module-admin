@@ -29,10 +29,12 @@ namespace AutoAdmin\Fields {
         public static function factory($class , $params = null)
         {
             if ( !class_exists($class) || !is_a($class , '\AutoAdmin\Fields\Field' , true) ) {
+
                 $class = __NAMESPACE__ . '\\' . ucfirst($class) . 'Field';
             }
 
             if ( !class_exists($class) ) {
+
                 return false;
             }
 
@@ -166,12 +168,12 @@ namespace AutoAdmin\Fields {
                 [ 'value' => $this->getValue() , 'id' => $fieldId ] + $defaultParams
             );
 
-            $this->_params->setParam('id',$fieldId);
+            $this->_params->setParam('id' , $fieldId);
 
             // все параметры уже добавлены, в общем списке они не нужны
             unset($tagParams['tag']);
 
-            $tagParams['class'] = isset($tagParams['class']) ? $tagParams['class'].' form-control' : 'form-control';
+            $tagParams['class'] = isset($tagParams['class']) ? $tagParams['class'] . ' form-control' : 'form-control';
 
             $layout = $this->_params->getParam('options.layout' , $layout);
 
@@ -187,11 +189,7 @@ namespace AutoAdmin\Fields {
                 ]
             );
 
-            ob_start();
-            $this->_view->render($this->getLayoutDir($layout) , $layout);
-
-            return ob_get_clean();
+            return $this->_view->getRender($this->getLayoutDir($layout) , $layout);
         }
-
     }
 }

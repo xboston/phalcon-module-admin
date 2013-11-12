@@ -30,7 +30,7 @@ class Categories extends \BaseModel
     public $slug;
 
     /**
-     * @FormField(type: textarea, label: 'Описание', editor: false )
+     * @FormField(type: textArea, label: 'Описание', editor: false )
      * @var string
      */
     public $description;

@@ -1,13 +1,14 @@
 <?php
 
-namespace AutoAdmin\Fields;
+namespace AutoAdmin\Fields {
 
-class ImageField extends Field
-{
-
-    public function afterSave($model)
+    class ImageField extends Field
     {
-        //upload
-    }
 
+        public function afterSave($model)
+        {
+            //upload
+        }
+
+    }
 }

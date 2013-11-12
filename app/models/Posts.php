@@ -28,25 +28,25 @@ class Posts extends \BaseModel
     public $slug;
 
     /**
-     * @FormField(type: textarea, label: 'Описание', editor: true )
+     * @FormField(type: textArea, label: 'Описание', editor: true )
      * @var string
      */
     public $description;
 
     /**
-     * @FormField(type: textarea, label: 'RAW HTML', editor: false )
+     * @FormField(type: textArea, label: 'RAW HTML', editor: false )
      * @var string
      */
     public $html;
 
     /**
-     * @FormField(type: textarea, label: 'RAW HTML', editor: false )
+     * @FormField(type: textArea, label: 'RAW HTML', editor: false )
      * @var string
      */
     public $css;
 
     /**
-     * @FormField(type: textarea, label: 'RAW HTML', editor: false )
+     * @FormField(type: textArea, label: 'RAW HTML', editor: false )
      * @var string
      */
     public $js;
