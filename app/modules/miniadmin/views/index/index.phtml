@@ -1,0 +1,13 @@
+<?php if ( 0/*$pager->length() == 0 */): ?>
+    <p>Sorry nothing found</p>
+<?php else: ?>
+    <ul>
+        <?php foreach ( $pager as $item ): ?>
+            <li><?php echo $item ?></li>
+        <?php endforeach ?>
+    </ul>
+
+    <?php if ( $pager->haveToPaginate() ): ?>
+        <?php echo $pager->getLayout() ?>
+    <?php endif ?>
+<?php endif ?>

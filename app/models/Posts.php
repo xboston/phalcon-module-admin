@@ -6,7 +6,7 @@ class Posts extends \BaseModel
 
     /**
      * @Primary
-     * @FormField(type: hidden)
+     * @FormField(type: Hidden)
      * @TableField(type: text, label: id, options: { sortable: true })
      * @var integer
      */
@@ -14,8 +14,7 @@ class Posts extends \BaseModel
 
     /**
      * @Title
-     * @Field(type: text, label: 'Заголовок', tag: {class: 'input-lg', maxlength: 25 })
-     * @FormField()
+     * @FormField(type: text, label: 'Заголовок', tag: {class: 'input-lg', maxlength: 25 })
      * @TableField(options: { layout: link })
      * @var string
      */
@@ -40,13 +39,13 @@ class Posts extends \BaseModel
     public $html;
 
     /**
-     * @FormField(type: textArea, label: 'RAW HTML', editor: false )
+     * @FormField(type: textArea, label: 'CSS RAW', editor: false )
      * @var string
      */
     public $css;
 
     /**
-     * @FormField(type: textArea, label: 'RAW HTML', editor: false )
+     * @FormField(type: textArea, label: 'JS RAW', editor: false )
      * @var string
      */
     public $js;

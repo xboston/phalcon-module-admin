@@ -1,8 +1,14 @@
 <?php
 
-use Phalcon\DI\FactoryDefault , Phalcon\Mvc\View , Phalcon\Mvc\Url as UrlResolver , Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+use Phalcon\DI\FactoryDefault , Phalcon\Mvc\View , Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 $di = new FactoryDefault();
+
+$di->set('url', function() use ($config) {
+        $url = new Phalcon\Mvc\Url();
+        $url->setBaseUri($config->application->baseUri);
+        return $url;
+    }, true);
 
 $di->set(
     'view' ,

@@ -4,7 +4,7 @@ namespace Admin\Controllers {
 
     use Phalcon\Mvc\View;
 
-    class BaseController extends AdminController
+    class BaseController extends IndexController
     {
 
         public function initialize()

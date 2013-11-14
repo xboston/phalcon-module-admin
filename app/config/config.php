@@ -16,10 +16,11 @@ return new \Phalcon\Config(
        'viewsDir'       => COREROOT . '/app/views/' ,
        'cacheDir'       => COREROOT . '/app/cache/' ,
        'traitsDir'      => COREROOT . '/app/traits/' ,
+       'libraryDir'      => COREROOT . '/app/library/' ,
        'tmpDir'         => PUBLICROOT . '/temp/' ,
        'filesDir'       => PUBLICROOT . '/files/' ,
        'publicDir'      => PUBLICROOT . '/' ,
-       //'baseUri'        => 'http://phalcon-admin.local/' ,
+       'baseUri'        => 'http://phalcon-admin.local/' ,
    ] ,
    'site'        => [
        'name' => 'Phalcon Admin'

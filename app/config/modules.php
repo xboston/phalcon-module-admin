@@ -8,5 +8,9 @@ return array(
     'autoadmin' => array(
         'className' => 'AutoAdmin\Module',
         'path'      => '../app/modules/autoadmin/module.php'
+    ),
+    'miniadmin' => array(
+        'className' => 'MiniAdmin\Module',
+        'path'      => '../app/modules/miniadmin/module.php'
     )
 );
