@@ -6,7 +6,7 @@
 /** @var \AutoAdmin\Helpers\FieldParams $params */
 /** @var array $tag */
 
-if ($params->getParam('type') !== 'hidden') :
+if ( strtolower($params->getParam('type')) !== 'hidden') :
 ?>
 <div class="form-group">
     <label class="control-label" for="<?php echo $params->getParam('id') ?>">
